@@ -6,26 +6,27 @@
 
 ## 安装
 
-在新设备上，将 Skill 直接安装到 Codex 的本地 Skill 目录：
+通过 `skills` CLI 从 GitHub 安装：
 
 ```bash
-git clone https://github.com/iamnanyi/noai-writing.git ~/.codex/skills/noai-writing
+npx skills add https://github.com/iamnanyi/noai-writing \
+  --skill noai-writing
 ```
 
 安装后重新打开 Codex 或新建任务，让它加载这个 Skill。
 
 ## 更新
 
-如果已经安装过，拉取仓库最新内容：
+如果已经安装过，更新到最新版本：
 
 ```bash
-git -C ~/.codex/skills/noai-writing pull --ff-only
+npx skills update noai-writing
 ```
 
-更新后重新打开 Codex 或新建任务即可生效。可以用下面的命令确认入口文件存在：
+更新后重新打开 Codex 或新建任务即可生效。可以用下面的命令查看已安装的 Skill：
 
 ```bash
-test -f ~/.codex/skills/noai-writing/SKILL.md && echo "noai-writing installed"
+npx skills list
 ```
 
 ## 维护方式
