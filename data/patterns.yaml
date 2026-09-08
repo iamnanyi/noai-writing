@@ -1,0 +1,203 @@
+version: 1
+language: zh-CN
+default_mode: strict
+rules:
+- id: C01
+  category: contrast
+  severity: high
+  forms:
+  - 不是A，而是B
+  - 真正的问题不是A，而是B
+  - 最值得关注的不是A，而是B
+  - 问题不在A，而在B
+  actions:
+  - DIRECT
+  - DELETE
+  - SPECIFY
+- id: C02
+  category: contrast
+  severity: high
+  forms:
+  - 不仅是A，更是B
+  - 不只是A，更是B
+  - 带来的不只是A，还有B
+  actions:
+  - DIRECT
+  - SPLIT
+- id: F01
+  category: fake_insight
+  severity: high
+  forms:
+  - 真正值得关注的是
+  - 真正重要的是
+  - 真正有意思的是
+  - 真正决定胜负的是
+  actions:
+  - DELETE
+  - DIRECT
+- id: F02
+  category: fake_insight
+  severity: high
+  forms:
+  - 值得注意的是
+  - 更值得注意的是
+  - 值得一提的是
+  - 需要注意的是
+  - 不容忽视的是
+  actions:
+  - DELETE
+  - DIRECT
+- id: F03
+  category: judgement_shell
+  severity: high
+  forms:
+  - 目标很明确
+  - 答案很明确
+  - 方向已经很清楚
+  - 信号已经非常明确
+  - 结论其实很简单
+  actions:
+  - DELETE
+  - DIRECT
+  - SPLIT
+- id: S01
+  category: redundant_summary
+  severity: medium
+  forms:
+  - 也就是说
+  - 换句话说
+  - 简单来说
+  - 一句话总结
+  - 说白了
+  actions:
+  - DELETE
+  - DIRECT
+- id: S02
+  category: implication_shell
+  severity: high
+  forms:
+  - 这意味着
+  - 这背后意味着
+  - 这释放了一个明确的信号
+  - 这折射出
+  actions:
+  - SPECIFY
+  - GROUND
+- id: G01
+  category: grandiosity
+  severity: high
+  forms:
+  - 一个新时代正在到来
+  - 一个时代正在结束
+  - 真正的变化才刚刚开始
+  - 好戏才刚刚开始
+  actions:
+  - DELETE
+  - SPECIFY
+- id: G02
+  category: abstract_claim
+  severity: high
+  terms:
+  - 重新定义
+  - 重塑
+  - 范式
+  - 底层逻辑
+  - 想象空间
+  - 分水岭
+  - 深远影响
+  actions:
+  - GROUND
+  - SPECIFY
+  - DELETE
+- id: P01
+  category: punctuation
+  severity: high
+  symbol: ：
+  risky_uses:
+  - 判断+冒号+解释
+  - 结论+冒号+证据
+  - 抽象概念+冒号+排比
+  - 金句+冒号+拔高
+  actions:
+  - DELETE
+  - SPLIT
+  - REORDER
+- id: P02
+  category: punctuation
+  severity: high
+  symbol: ——
+  risky_uses:
+  - 陈述+破折号+概念升级
+  - 判断+破折号+解释
+  - 事实+破折号+拔高
+  actions:
+  - SPLIT
+  - DIRECT
+  - GROUND
+- id: P03
+  category: paragraphing
+  severity: high
+  forms:
+  - 连续单句自然段
+  - 几个字单独成段
+  - 数字单独成段
+  actions:
+  - MERGE
+- id: A01
+  category: authority_shell
+  severity: high
+  forms:
+  - 一个事实是
+  - 一个不争的事实是
+  - 一个现实是
+  - 不得不承认
+  - 我们必须承认
+  actions:
+  - DIRECT
+  - SPECIFY
+- id: A02
+  category: unsupported_consensus
+  severity: high
+  forms:
+  - 很多人以为
+  - 大多数人认为
+  - 很少有人注意到
+  - 行业普遍认为
+  - 很多人没有意识到
+  actions:
+  - DELETE
+  - SPECIFY
+- id: A03
+  category: reader_assumption_hook
+  severity: medium
+  forms:
+  - 你以为A，其实B
+  - 事情可能和你想的不一样
+  - 别急着下结论
+  - 答案可能出乎很多人的意料
+  actions:
+  - DIRECT
+- id: G03
+  category: historical_grandiosity
+  severity: high
+  forms:
+  - 这是第一次
+  - 第一次真正意义上的
+  - 这是一个分水岭
+  - 拐点已经出现
+  - 我们正在见证
+  actions:
+  - DELETE
+  - GROUND
+  - SPECIFY
+- id: T05
+  category: future_question_shell
+  severity: medium
+  forms:
+  - 接下来真正的问题是
+  - 接下来要看的是
+  - 接下来值得关注的是
+  - 接下来会发生什么
+  actions:
+  - DIRECT
+  - SPECIFY
