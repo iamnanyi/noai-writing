@@ -201,3 +201,30 @@ rules:
   actions:
   - DIRECT
   - SPECIFY
+- id: T06
+  category: paragraph_lead_pseudo_heading
+  severity: high
+  forms:
+  - 完整判断句+句号+本段内容展开
+  - 概括句+后文逐项复述
+  - 报幕式首句+证据或因果
+  detection:
+  - 删除首句后信息是否基本不变
+  - 后文是否覆盖首句全部事实或判断
+  - 多个段落是否重复同一种段首节奏
+  actions:
+  - DELETE
+  - REORDER
+  - MERGE
+- id: T07
+  category: prose_shaped_subheading
+  severity: high
+  forms:
+  - 完整陈述句作为小标题
+  - 判断句或结论句作为小标题
+  - 带句号的正文式小标题
+  - 过渡报幕句作为小标题
+  actions:
+  - DELETE
+  - DIRECT
+  - MERGE
